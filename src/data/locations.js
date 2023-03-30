@@ -1,0 +1,178 @@
+export const locations = [
+    {
+        placename: 'Herrmannsdorfer Landwerkstätten Glonn GmbH & Co. KG',
+        categories: [
+            `bio bauer`,
+            `bio gastronom`,
+        ],
+        coords: {
+            lat: 47.9932783,
+            lng: 11.8978862,
+        },
+        products: [
+            `bio rinder`,
+            `bio schwein`,
+            `bio-fleisch`,
+            `Hofkäserei`,
+            `bio Bäckerei`,
+            `bio gemuse`,
+            `bio wirtshaus`,
+            `Hofladen`,
+        ],
+        adress: `Herrmannsdorf 7, 85625 Glonn, Germany`,
+        hours: `M-F 24std`,
+        telephone: `+49809390940`,
+        description: `Bio Bauern und Bio Wirtshaus`,
+        certificate: `yes`,
+        url: `http://www.herrmannsdorfer.de/`,
+        image: ``,
+    },
+    {
+        placename: 'Frische Bio-Eier',
+        categories: [
+            `bio bauer`,
+        ],
+        coords: {
+            lat: 48.1064013,
+            lng: 11.5316961,
+        },
+        products: [
+            `bio eier`,
+            `bio huhner`,
+            `bio-futter`,
+        ],
+        adress: `Etzweg 33, 85774 Unterföhring, Germany`,
+        hours: `M-F 24std`,
+        telephone: `+4928797324972`,
+        description: `Bio Bauern`,
+        certificate: `yes`,
+        url: ``,
+        image: ``,
+    },
+    {
+        placename: 'Bio-Hof Lenz / Franz Lenz junior',
+        categories: [
+            `bio bauer`,
+            `bio gastronom`,
+        ],
+        coords: {
+            lat: 48.0828606,
+            lng: 11.8166808,
+        },
+        products: [
+            `bio rinder`,
+        ],
+        adress: `Münchner Str. 23, 85604 Zorneding, Germany`,
+        hours: `M-F 24std`,
+        telephone: `+4928797324972`,
+        description: `Bio Bauern`,
+        certificate: `yes`,
+        url: `https://www.biohof-lenz`,
+        image: ``,
+    },
+    {
+        placename: 'Naturlandhof Seitz',
+        categories: [
+            `bio bauer`,
+        ],
+        coords: {
+            lat: 48.0239742,
+            lng: 10.9171486,
+        },
+        products: [
+            `bio eier`,
+            `bio huhner`,
+            `bio-futter`,
+        ],
+        adress: `Gautinger Weg 11, 82065 Baierbrunn, Germany`,
+        hours: `M-F 24std`,
+        telephone: `+4928797324972`,
+        description: `Bio Bauern`,
+        certificate: `yes`,
+        url: `https://www.seitzhof-baierbrunn.de/`,
+        image: ``,
+    },
+    {
+        placename: 'Kasparhof Biopilze GbR',
+        categories: [
+            `bio bauer`,
+        ],
+        coords: {
+            lat: 48.1064013,
+            lng: 11.5316961,
+        },
+        products: [
+            `bio pilze`,
+        ],
+        adress: `Mailling 4, 83104 Tuntenhausen, Germany`,
+        hours: `M-F 24std`,
+        telephone: `+498065291`,
+        description: `Bio Pilze`,
+        certificate: `yes`,
+        url: `http://www.kasparhof.bayern/`,
+        image: ``,
+    },
+    {
+        placename: 'Biolandhof Miller, regionale Bioprodukte',
+        categories: [
+            `bio bauer`,
+            `bio gastronom`,
+        ],
+        coords: {
+            lat: 48.0851892,
+            lng: 9.2755508,
+        },
+        products: [
+            `bio fleisch`,
+        ],
+        adress: `Hohenreuter Str. 108, 87769 Oberrieden, Germany`,
+        hours: `M-F 24std`,
+        telephone: `+4982657334010`,
+        description: `Bio Pilze`,
+        certificate: `yes`,
+        url: `http://www.kasparhof.bayern/`,
+        image: ``,
+    },
+    {
+        placename: 'Philadelphia Bioland Bauernhof',
+        categories: [
+            `bio bauer`,
+            `bio gastronom`,
+        ],
+        coords: {
+            lat: 48.8111594,
+            lng: 7.8933334,
+        },
+        products: [
+            `bio Gemuse`,
+        ],
+        adress: `Strohgäustraße 52, 71229 Leonberg, Germany`,
+        hours: `M-F 24std`,
+        telephone: `+49715228189`,
+        description: `Bio Gemuse`,
+        certificate: `yes`,
+        url: `http://www.philadelphia-bioland.de/`,
+        image: ``,
+    },
+    {
+        placename: 'Gerleigner',
+        categories: [
+            `Biobetrieb`,
+        ],
+        coords: {
+            lat: 48.5293595,
+            lng: 11.4297003,
+        },
+        products: [
+            `Ackerbau`,
+            `Heutrocknung`,
+        ],
+        adress: `Amsham 9, 94086 Bad Griesbach im Rottal, Germany`,
+        hours: `M-F 24std`,
+        telephone: `+491715013327`,
+        description: `Ackerbau`,
+        certificate: `yes`,
+        url: `https://bio-gerleigner.com/`,
+        image: ``,
+    },
+];
