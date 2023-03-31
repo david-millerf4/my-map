@@ -27,7 +27,7 @@ const MapsPage = ({ data, location }) => {
               <MapContainer style={{ height: `500px`, border: `1 px solid green` }} center={CENTER} zoom={DEFAULT_ZOOM} >
                   <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution='&copy; David Miller | <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' />
                   {locations.map(location => {
-                      const { placename, coords, adress, products, categories, hours, telephone, description, url } = location;
+                      const { placename, coords, adress, products, categories, hours, telephone, email, description, url } = location;
                       const position = [coords.lat, coords.lng];
                       return (
                           <Marker key={placename} position={position} >
@@ -38,6 +38,7 @@ const MapsPage = ({ data, location }) => {
                                           <ul className="popup-list">
                                               <li><strong>adr:</strong> {adress}</li>
                                               <li><strong>tel:</strong> {telephone}</li>
+                                              <li><strong>email: </strong>{email}</li>
                                               <li><strong>hours:</strong> {hours}</li>
                                               <li><strong>desc:</strong> {description}</li>
                                               <li><strong>url:</strong> {url}</li>
