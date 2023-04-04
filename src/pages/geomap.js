@@ -3,8 +3,9 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import MapHeader from "../components/map-header"
+import MapSidebar from "../components/map-sidebar"
 
-import { MapContainer, TileLayer, Marker, Popup, useMap, Polygon, GeoJSON } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup, useMap, GeoJSON } from 'react-leaflet'
 import { locations } from "../data/locations-bayern"
 import { bavariaGeoJson } from "../data/bavaria-geo"
 
@@ -18,10 +19,15 @@ const MAP_LOCATION = {
   const MAP_HEIGHT = {height: "700px"};
   const MAP_SCROLL = false;
 
+  const geoOpacity =  "0.3"
+  const geoColor = "#38c401"
+  const geoAttribution = "David Miller"
+
   
 const GeoMapsPage = ({ data, location }) => {
     const siteTitle = data.site.siteMetadata.title
 
+    // Map settings
     const mapSettings = {
         center: MAP_CENTER,
         defaultBaseMap: "OpenStreetMap",
@@ -30,9 +36,13 @@ const GeoMapsPage = ({ data, location }) => {
         scrollWheel: MAP_SCROLL,
     };
 
-    const bavaria_outline = bavariaGeoJson;
-    console.log("bavaria_ouline: ", bavaria_outline)
-    const purpleOptions = { color: 'purple' }
+    // GEOJSON
+    const geoJsonOptions = { 
+        data: bavariaGeoJson,
+        opacity: geoOpacity,
+        color: geoColor,
+        attribution: geoAttribution
+    };
 
     function MyComponent() {
         const map = useMap()
@@ -40,20 +50,11 @@ const GeoMapsPage = ({ data, location }) => {
         return null
       }
 
-    const polygon = [
-        [51.515, -0.09],
-        [51.52, -0.1],
-        [51.52, -0.12],
-      ]
-
     return (
         <Layout location={location} title={siteTitle}>
             <MapHeader title="bio bayern geo json map" filters="filters" />
             <div className="row px-0 mx-0">
-                <div className="col-lg-2 col-md-12 column">
-                  <div className="row" style={{height: "30%"}}>top</div>
-                  <div className="row">bottom</div>
-                </div>
+                <MapSidebar title="sidebar title" />
                 <div className="col-lg-10 col-md-12">
                     <div className="col">
                         {/* Map */}
@@ -62,9 +63,8 @@ const GeoMapsPage = ({ data, location }) => {
                                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                             />
-                            <Polygon pathOptions={purpleOptions} positions={polygon} />
                             <MyComponent />
-                            <GeoJSON attribution="David Miller" data={bavaria_outline} opacity="0.1"color="gray" />
+                            <GeoJSON {...geoJsonOptions} />
                             {locations.map(location => {
                                 const { placename, coords, adress, products, categories, hours, telephone, email, description, url } = location;
                                 const position = [coords.lat, coords.lng];
