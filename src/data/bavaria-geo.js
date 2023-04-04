@@ -1,4 +1,5 @@
-{
+export const bavariaGeoJson = [
+  {
   "type": "FeatureCollection",
   "features": [
     {
@@ -3884,3 +3885,4 @@
     }
   ]
 }
+];

@@ -5,9 +5,7 @@ import Seo from "../components/seo"
 import MapHeader from "../components/map-header"
 
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import { locations } from "../data/locations"
-import { features } from "../data/bavaria.geo.json"
-import L from "leaflet"
+import { locations } from "../data/locations-bayern"
 
 const MapsPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
@@ -18,8 +16,6 @@ const MapsPage = ({ data, location }) => {
   };
   const CENTER = [LOCATION.lat, LOCATION.lng];
   const DEFAULT_ZOOM = 6;
-
-  console.log(features);
 
   return (
       <Layout location={location} title={siteTitle}>

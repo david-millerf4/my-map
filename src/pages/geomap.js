@@ -5,16 +5,16 @@ import Seo from "../components/seo"
 import MapHeader from "../components/map-header"
 
 import { MapContainer, TileLayer, Marker, Popup, useMap, Polygon, GeoJSON } from 'react-leaflet'
-import { locations } from "../data/locations"
-import { features } from "../data/bavaria.geo.json"
+import { locations } from "../data/locations-bayern"
+import { bavariaGeoJson } from "../data/bavaria-geo"
 
 //  centering on bayern
 const MAP_LOCATION = {
-    lat: 48.8992823,
-    lng: 9.165479
+    lat: 49.018308,
+    lng: 12.1319584
   };
   const MAP_CENTER = [MAP_LOCATION.lat, MAP_LOCATION.lng];
-  const MAP_ZOOM = 7;
+  const MAP_ZOOM = 7.4;
   const MAP_HEIGHT = {height: "700px"};
   const MAP_SCROLL = false;
 
@@ -30,7 +30,7 @@ const GeoMapsPage = ({ data, location }) => {
         scrollWheel: MAP_SCROLL,
     };
 
-    const bavaria_outline = features;
+    const bavaria_outline = bavariaGeoJson;
     console.log("bavaria_ouline: ", bavaria_outline)
     const purpleOptions = { color: 'purple' }
 
@@ -64,13 +64,13 @@ const GeoMapsPage = ({ data, location }) => {
                             />
                             <Polygon pathOptions={purpleOptions} positions={polygon} />
                             <MyComponent />
-                            <GeoJSON attribution="David Miller" data={bavaria_outline} />
+                            <GeoJSON attribution="David Miller" data={bavaria_outline} opacity="0.1"color="gray" />
                             {locations.map(location => {
                                 const { placename, coords, adress, products, categories, hours, telephone, email, description, url } = location;
                                 const position = [coords.lat, coords.lng];
                                 return (
                                     <Marker key={placename} position={position} >
-                                        <Popup>
+                                        <Popup maxHeight={400}>
                                             <div class="popup-gatsby">
                                                 <div class="popup-gatsby-content">
                                                     <h1 className="popup-header">{placename}</h1>
