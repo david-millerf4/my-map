@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link } from "gatsby"
+import { Container, Row, Col } from "react-bootstrap"
 
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
@@ -8,35 +9,42 @@ const Layout = ({ location, title, children }) => {
 
   if (isRootPath) {
     header = (
-     
-        <header>
-            <Link className="header-link-home" to="/">
-                {title}
-            </Link>
-            <Link to="/maps">Maps</Link>
-        </header>
+            <Row className="px-5">
+                <Col>
+                    <Link className="header-link-home" to="/">{title}</Link>
+                </Col>
+                <Col>
+                    <Link to="/maps">Markers</Link>
+                </Col>
+                <Col>
+                    <Link to="/geomap">Geo Polygon</Link>
+                </Col>
+            </Row>
     )
   } else {
     header = (
-        <header>
-            <Link className="header-link-home" to="/">
-                {title}
-            </Link>
-            <Link to="/maps">Maps</Link>
-        </header>
+            <Row className="px-5">
+                <Col>
+                    <Link className="header-link-home" to="/">{title}</Link>
+                </Col>
+                <Col>
+                    <Link to="/maps">Markers</Link>
+                </Col>
+                <Col>
+                    <Link to="/geomap">Geo Polygon</Link>
+                </Col>
+            </Row>
     )
   }
 
   return (
-    <div className="global-wrapper" data-is-root-path={isRootPath}>
-      <header className="global-header">{header}</header>
-      <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
-      </footer>
-    </div>
+      <Container fluid className="global-wrapper p-0" data-is-root-path={isRootPath}>
+            <header className="global-header">{header}</header>
+            <main>{children}</main>
+            <footer className="global-footer text-center">
+                &copy; {new Date().getFullYear()} | An Electric Sunburst Production
+            </footer>
+      </Container>
   )
 }
 
