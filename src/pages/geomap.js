@@ -4,8 +4,9 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import MapHeader from "../components/map-header"
 import MapSidebar from "../components/map-sidebar"
+import MapPopups from "../components/map-popups"
 
-import { MapContainer, TileLayer, Marker, Popup, useMap, GeoJSON } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup, useMap, GeoJSON, Tooltip} from 'react-leaflet'
 import { locations } from "../data/locations-bayern"
 import { bavariaGeoJson } from "../data/bavaria-geo"
 
@@ -36,6 +37,11 @@ const GeoMapsPage = ({ data, location }) => {
         scrollWheel: MAP_SCROLL,
     };
 
+    // Popup settings
+    const popUpSettings = {
+        maxHeight: "400",
+    }
+
     // GEOJSON
     const geoJsonOptions = { 
         data: bavariaGeoJson,
@@ -50,11 +56,15 @@ const GeoMapsPage = ({ data, location }) => {
         return null
       }
 
+      function getInfo () {
+        return "news of the day";
+      }
+
     return (
         <Layout location={location} title={siteTitle}>
-            <MapHeader title="bio bayern geo json map" filters="filters" />
+            <MapHeader title="Bio in Bayern" filters="filters" />
             <div className="row px-0 mx-0">
-                <MapSidebar title="sidebar title" />
+                <MapSidebar title={getInfo()} />
                 <div className="col-lg-10 col-md-12">
                     <div className="col">
                         {/* Map */}
@@ -66,40 +76,12 @@ const GeoMapsPage = ({ data, location }) => {
                             <MyComponent />
                             <GeoJSON {...geoJsonOptions} />
                             {locations.map(location => {
-                                const { placename, coords, adress, products, categories, hours, telephone, email, description, url } = location;
-                                const position = [coords.lat, coords.lng];
+                                const position = [location.coords.lat, location.coords.lng];
                                 return (
-                                    <Marker key={placename} position={position} >
-                                        <Popup maxHeight={400}>
-                                            <div class="popup-gatsby">
-                                                <div class="popup-gatsby-content">
-                                                    <h1 className="popup-header">{placename}</h1>
-                                                    <ul className="popup-list">
-                                                        <li><strong>adr:</strong> {adress}</li>
-                                                        <li><strong>tel:</strong> {telephone}</li>
-                                                        <li><strong>email: </strong>{email}</li>
-                                                        <li><strong>hours:</strong> {hours}</li>
-                                                        <li><strong>desc:</strong> {description}</li>
-                                                        <li><strong>url:</strong> {url}</li>
-                                                        <li><strong>Categories: </strong>
-                                                            {categories.map(category => {
-                                                                return (
-                                                                    <span key={category}>{category}, </span>
-                                                                )
-                                                            })}
-                                                        </li>
-                                                        <li><strong>Products: </strong>
-                                                            <ul>
-                                                                {products.map(product => {
-                                                                    return (
-                                                                        <li key={placename}>{product}</li>
-                                                                    )
-                                                                })}
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                    <Marker key={location.coords.lat} position={position}  alt={location.placename} riseOnHover={true}>
+                                        <Tooltip>{location.placename}</Tooltip>
+                                        <Popup {...popUpSettings}>
+                                            <MapPopups content={location} />
                                         </Popup>
                                     </Marker>
                                 )
@@ -108,7 +90,6 @@ const GeoMapsPage = ({ data, location }) => {
                     </div>
                 </div>
             </div>
-
         </Layout>
     )
 }

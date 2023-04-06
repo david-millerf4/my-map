@@ -106,7 +106,7 @@ export const locations = [
             `bio bauer`,
         ],
         coords: {
-            lat: 48.1064013,
+            lat: 48.1064014,
             lng: 11.5316961,
         },
         products: [
