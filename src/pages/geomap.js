@@ -1,12 +1,13 @@
-import * as React from "react"
+import React, { useRef, useEffect }  from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import MapHeader from "../components/map-header"
 import MapSidebar from "../components/map-sidebar"
 import MapPopups from "../components/map-popups"
-
+import L from "leaflet"
 import { MapContainer, TileLayer, Marker, Popup, useMap, GeoJSON, Tooltip} from 'react-leaflet'
+
 import { locations } from "../data/locations-bayern"
 import { bavariaGeoJson } from "../data/bavaria-geo"
 
@@ -54,11 +55,52 @@ const GeoMapsPage = ({ data, location }) => {
         const map = useMap()
         console.log('MyComponent map center:', map.getCenter())
         return null
-      }
+      };
 
-      function getInfo () {
+
+      const CustomButton = () => {
+
+      const map = useMap();
+
+        useEffect(() => {
+          if (!map) return;
+      
+          const customControler = L.Control.extend({
+            options: {
+              position: "topright",
+            },
+      
+            onAdd: function () {
+              const btn = L.DomUtil.create("button");
+              btn.title = "pooooooooooooop rotation";
+              btn.textContent = "💩";
+              btn.className = "customButton";
+      
+              btn.onmouseover = function () {
+                this.style.transform = "scale(5.3)";
+              };
+      
+              btn.onmouseout = function () {
+                this.style.transform = "scale(1)";
+              };
+      
+              return btn;
+            },
+          });
+
+          map.addControl(new customControler());
+        }, [map]);
+
+        return null;
+    };
+      
+
+      // potentially for sidebar
+          function getInfo () {
         return "news of the day";
       }
+
+
 
     return (
         <Layout location={location} title={siteTitle}>
@@ -86,6 +128,7 @@ const GeoMapsPage = ({ data, location }) => {
                                     </Marker>
                                 )
                             })}
+                            <CustomButton />
                         </MapContainer>
                     </div>
                 </div>
