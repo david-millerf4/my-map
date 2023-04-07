@@ -1,10 +1,7 @@
 export const locations = [
     {
         placename: 'Herrmannsdorfer Landwerkstätten Glonn GmbH & Co. KG',
-        categories: [
-            `bio bauer`,
-            `bio gastronom`,
-        ],
+        category: 'biolebensmittel',
         coords: {
             lat: 47.9932783,
             lng: 11.8978862,
@@ -31,9 +28,7 @@ export const locations = [
     },
     {
         placename: 'Frische Bio-Eier',
-        categories: [
-            `bio bauer`,
-        ],
+        category: 'biolebensmittel',
         coords: {
             lat: 48.1064013,
             lng: 11.5316961,
@@ -55,10 +50,7 @@ export const locations = [
     },
     {
         placename: 'Bio-Hof Lenz / Franz Lenz junior',
-        categories: [
-            `bio bauer`,
-            `bio gastronom`,
-        ],
+        category: 'biolebensmittel',
         coords: {
             lat: 48.0828606,
             lng: 11.8166808,
@@ -78,9 +70,7 @@ export const locations = [
     },
     {
         placename: 'Naturlandhof Seitz',
-        categories: [
-            `bio bauer`,
-        ],
+        category: 'biolebensmittel',
         coords: {
             lat: 48.0239742,
             lng: 10.9171486,
@@ -102,9 +92,7 @@ export const locations = [
     },
     {
         placename: 'Kasparhof Biopilze GbR',
-        categories: [
-            `bio bauer`,
-        ],
+        category: 'biolebensmittel',
         coords: {
             lat: 48.1064014,
             lng: 11.5316961,
@@ -124,9 +112,7 @@ export const locations = [
     },
     {
         placename: 'Gerleigner',
-        categories: [
-            `Biobetrieb`,
-        ],
+        category: 'biolebensmittel',
         coords: {
             lat: 48.5293595,
             lng: 11.4297003,
@@ -147,9 +133,7 @@ export const locations = [
     },
     {
         placename: 'Billesberger Biobauernhof',
-        categories: [
-            `Biobauernhof`,
-        ],
+        category: 'biolebensmittel',
         coords: {
             lat: 48.2769166,
             lng: 11.7603377,
@@ -172,6 +156,50 @@ export const locations = [
         description: `Biobauernhof, Hofladen`,
         certificate: `yes`,
         url: `https://www.billesberger.de/`,
+        image: ``,
+    },
+    {
+        placename: 'Bio Food Truck glutenfrei',
+        category: 'biogastronom',
+        coords: {
+            lat: 48.1126122,
+            lng: 11.6840437,
+        },
+        products: [
+            `Catering`,
+            `Foodtruck`
+
+        ],
+        adress: `Edeltraudstraße 21, 81827 München`,
+        bundesland: `Bayern`,
+        hours: `Mo - Sa 8 bis 20 Uhr`,
+        telephone: `+015253379376`,
+        email: `kontakt@biofoodtruck.net`,
+        description: `Biogastronom, Catering, Foodtruck`,
+        certificate: `yes`,
+        url: `https://www.biofoodtruck.net`,
+        image: ``,
+    },
+    {
+        placename: 'Bio Gastro',
+        category: 'biogastronom',
+        coords: {
+            lat: 48.1166122,
+            lng: 11.6890437,
+        },
+        products: [
+            `Catering`,
+            `Foodtruck`
+
+        ],
+        adress: `Edeltraudstraße 21, 81827 München`,
+        bundesland: `Bayern`,
+        hours: `Mo - Sa 8 bis 20 Uhr`,
+        telephone: `+015253379376`,
+        email: `kontakt@biofoodtruck.net`,
+        description: `Biogastronom, Catering, Foodtruck`,
+        certificate: `yes`,
+        url: `https://www.biofoodtruck.net`,
         image: ``,
     },
 ];
