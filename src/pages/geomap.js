@@ -6,6 +6,8 @@ import MapHeader from "../components/map-header"
 import MapSidebar from "../components/map-sidebar"
 import MapPopups from "../components/map-popups"
 import L from "leaflet"
+import MarkerClusterGroup from "react-leaflet-cluster"
+
 import { MapContainer, TileLayer, Marker, Popup, useMap, GeoJSON, Tooltip, LayersControl, FeatureGroup, useMapEvent} from 'react-leaflet'
 
 import { locations } from "../data/locations-bayern"
@@ -148,11 +150,6 @@ const GeoMapsPage = ({ data, location }) => {
     // grouping map features by category
     const ControllingGroup = () => {
 
-        // console.log('gastros: ', gastros);
-        // console.log('loca: ', locations);
-        // console.log('bauern: ', bauern);
-
-
         const map = useMapEvent({
             overlayadd(e) {
                 let bounds = new L.LatLngBounds();
@@ -171,7 +168,6 @@ const GeoMapsPage = ({ data, location }) => {
 
         return null;
     };
-      
 
       // potentially for sidebar
           function getInfo () {
@@ -188,49 +184,42 @@ const GeoMapsPage = ({ data, location }) => {
                         <MapContainer {...mapSettings} whenCreated={sortLocationCategory(locations)}>
                             <MyComponent />
                             <GeoJSON {...geoJsonOptions} />
-                            {/* {locations.map(location => {
-                                const position = [location.coords.lat, location.coords.lng];
-                                return (
-                                    <Marker key={location.coords.lat} position={position}  alt={location.placename} riseOnHover={true}>
-                                        <Tooltip>{location.placename}</Tooltip>
-                                        <Popup {...popUpSettings}>
-                                            <MapPopups content={location} />
-                                        </Popup>
-                                    </Marker>
-                                )
-                            })} */}
                             <CustomButton />
                             <Legend />
                             <LayersControl position="topright" collapsed={false}>
                                 <TileLayer {...tileLayerSettings} />
-                                <LayersControl.Overlay name="Bio Lebensmittel">
+                                <LayersControl.Overlay name="Bio Lebensmittel" checked={true}>
                                     <FeatureGroup>
-                                        {bauern.map(B => {
-                                            const position = [B.coords.lat, B.coords.lng];
-                                            return (
+                                        <MarkerClusterGroup chunkedLoading>
+                                            {bauern.map(B => {
+                                                const position = [B.coords.lat, B.coords.lng];
+                                                return (
                                                     <Marker key={B.coords.lat} position={position} alt={B.placename} riseOnHover={true}>
                                                         <Tooltip>{B.placename}</Tooltip>
                                                         <Popup {...popUpSettings}>
                                                             <MapPopups content={B} />
                                                         </Popup>
                                                     </Marker>
-                                            )
-                                        })}
+                                                )
+                                            })}
+                                        </MarkerClusterGroup>
                                     </FeatureGroup>
                                 </LayersControl.Overlay>
-                                <LayersControl.Overlay name="Bio Gastronom">
+                                <LayersControl.Overlay name="Bio Gastronom" checked={true}>
                                     <FeatureGroup>
-                                        {gastros.map(gastro => {
-                                            const position = [gastro.coords.lat, gastro.coords.lng];
-                                            return (
+                                        <MarkerClusterGroup chunkedLoading>
+                                            {gastros.map(gastro => {
+                                                const position = [gastro.coords.lat, gastro.coords.lng];
+                                                return (
                                                     <Marker key={gastro.coords.lat} position={position} alt={gastro.placename} riseOnHover={true}>
                                                         <Tooltip>{gastro.placename}</Tooltip>
                                                         <Popup {...popUpSettings}>
                                                             <MapPopups content={gastro} />
                                                         </Popup>
                                                     </Marker>
-                                            )
-                                        })}
+                                                )
+                                            })}
+                                        </MarkerClusterGroup>
                                     </FeatureGroup>
                                 </LayersControl.Overlay>
                             </LayersControl>
