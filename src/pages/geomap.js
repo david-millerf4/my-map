@@ -42,6 +42,7 @@ const GeoMapsPage = ({ data, location }) => {
         zoom: MAP_ZOOM,
         style: MAP_HEIGHT,
         scrollWheel: MAP_SCROLL,
+        className: "map-geo",
     };
 
     // Popup settings
@@ -61,72 +62,73 @@ const GeoMapsPage = ({ data, location }) => {
     function MyComponent() {
         const map = useMap()
         console.log('MyComponent map center:', map.getCenter());
-        // sortLocationCategory(locations);
         return null
       };
 
-      // Custom Button
-  const CustomButton = () => {
 
-    const map = useMap();
 
-    useEffect(() => {
-      if (!map) return;
+    // Custom Button
+    const CustomButton = () => {
 
-      const customControler = L.Control.extend({
-        options: {
-          position: "topright",
-        },
+        const map = useMap();
 
-        onAdd: function () {
-          const btn = L.DomUtil.create("button");
-          btn.title = "pooooooooooooop rotation";
-          btn.textContent = "💩";
-          btn.className = "customButton";
+        useEffect(() => {
+            if (!map) return;
 
-          btn.onmouseover = function () {
-            this.style.transform = "scale(1.3)";
-          };
+            const customControler = L.Control.extend({
+                options: {
+                    position: "topright",
+                },
 
-          btn.onmouseout = function () {
-            this.style.transform = "scale(1)";
-          };
+                onAdd: function () {
+                    const btn = L.DomUtil.create("button");
+                    btn.title = "pooooooooooooop rotation";
+                    btn.textContent = "🪶";
+                    btn.className = "customButton";
 
-          return btn;
-        },
-      });
+                    btn.onmouseover = function () {
+                        this.style.transform = "scale(1.3)";
+                    };
 
-      map.addControl(new customControler());
-    }, [map]);
+                    btn.onmouseout = function () {
+                        this.style.transform = "scale(1)";
+                    };
 
-    return null;
-  };
+                    return btn;
+                },
+            });
+
+            map.addControl(new customControler());
+        }, [map]);
+
+        return null;
+    };
 
 
     // Legend
     const Legend = () => {
-      const map = useMap();
-      useEffect(() => {
-        if (!map) return;
-    
-        const legend = L.control({ position: "bottomleft" });
-    
-        legend.onAdd = () => {
-          const div = L.DomUtil.create("div", "description");
-          L.DomEvent.disableClickPropagation(div);
-    
-          const text = "<strong>©ESP</strong> David Miller <img src='../images/gatsby-icon.png' />";
-    
-          div.innerHTML = text;
-    
-          return div;
-        };
-    
-        legend.addTo(map);
-    
-      }, [map]);
-    
-      return null;
+        const map = useMap();
+        useEffect(() => {
+            if (!map) return;
+
+            const legend = L.control({ position: "bottomleft" });
+
+            legend.onAdd = () => {
+                const div = L.DomUtil.create("div", "description");
+                L.DomEvent.disableClickPropagation(div);
+
+                const text = "<strong>©ESP</strong> 🪶David Miller🪶";
+
+                div.innerHTML = text;
+
+                return div;
+            };
+
+            legend.addTo(map);
+
+        }, [map]);
+
+        return null;
     }
       
     // location sorting
@@ -146,29 +148,29 @@ const GeoMapsPage = ({ data, location }) => {
     // grouping map features by category
     const ControllingGroup = () => {
 
-        console.log('gastros: ', gastros  );
-        console.log('loca: ', locations);
-        console.log('bauern: ', bauern);
+        // console.log('gastros: ', gastros);
+        // console.log('loca: ', locations);
+        // console.log('bauern: ', bauern);
 
 
         const map = useMapEvent({
-          overlayadd(e) {
-            let bounds = new L.LatLngBounds();
-      
-            map.eachLayer(function (layer) {
-              if (layer instanceof L.FeatureGroup) {
-                bounds.extend(layer.getBounds());
-              }
-            });
-      
-            if (bounds.isValid()) {
-              map.flyToBounds(bounds);
-            }
-          },
+            overlayadd(e) {
+                let bounds = new L.LatLngBounds();
+
+                map.eachLayer(function (layer) {
+                    if (layer instanceof L.FeatureGroup) {
+                        bounds.extend(layer.getBounds());
+                    }
+                });
+
+                if (bounds.isValid()) {
+                    map.flyToBounds(bounds);
+                }
+            },
         });
-      
+
         return null;
-      };
+    };
       
 
       // potentially for sidebar
@@ -183,8 +185,7 @@ const GeoMapsPage = ({ data, location }) => {
                 <MapSidebar title={getInfo()} />
                 <div className="col-lg-10 col-md-12">
                     <div className="col">
-                        <MapContainer {...mapSettings}>
-                            {/* <TileLayer {...tileLayerSettings} /> */}
+                        <MapContainer {...mapSettings} whenCreated={sortLocationCategory(locations)}>
                             <MyComponent />
                             <GeoJSON {...geoJsonOptions} />
                             {/* {locations.map(location => {
@@ -200,19 +201,19 @@ const GeoMapsPage = ({ data, location }) => {
                             })} */}
                             <CustomButton />
                             <Legend />
-                            <LayersControl position="topright" collapsed={false} blah={sortLocationCategory(locations)}>
+                            <LayersControl position="topright" collapsed={false}>
                                 <TileLayer {...tileLayerSettings} />
                                 <LayersControl.Overlay name="Bio Lebensmittel">
                                     <FeatureGroup>
                                         {bauern.map(B => {
                                             const position = [B.coords.lat, B.coords.lng];
                                             return (
-                                                <Marker key={B.coords.lat} position={position} alt={B.placename} riseOnHover={true}>
-                                                    <Tooltip>{B.placename}</Tooltip>
-                                                    <Popup {...popUpSettings}>
-                                                        <MapPopups content={B} />
-                                                    </Popup>
-                                                </Marker>
+                                                    <Marker key={B.coords.lat} position={position} alt={B.placename} riseOnHover={true}>
+                                                        <Tooltip>{B.placename}</Tooltip>
+                                                        <Popup {...popUpSettings}>
+                                                            <MapPopups content={B} />
+                                                        </Popup>
+                                                    </Marker>
                                             )
                                         })}
                                     </FeatureGroup>
@@ -222,12 +223,12 @@ const GeoMapsPage = ({ data, location }) => {
                                         {gastros.map(gastro => {
                                             const position = [gastro.coords.lat, gastro.coords.lng];
                                             return (
-                                                <Marker key={gastro.coords.lat} position={position} alt={gastro.placename} riseOnHover={true}>
-                                                    <Tooltip>{gastro.placename}</Tooltip>
-                                                    <Popup {...popUpSettings}>
-                                                        <MapPopups content={gastro} />
-                                                    </Popup>
-                                                </Marker>
+                                                    <Marker key={gastro.coords.lat} position={position} alt={gastro.placename} riseOnHover={true}>
+                                                        <Tooltip>{gastro.placename}</Tooltip>
+                                                        <Popup {...popUpSettings}>
+                                                            <MapPopups content={gastro} />
+                                                        </Popup>
+                                                    </Marker>
                                             )
                                         })}
                                     </FeatureGroup>

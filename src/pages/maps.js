@@ -31,7 +31,7 @@ const MapsPage = ({ data, location }) => {
                       <MapContainer style={{ height: `775px`}} center={CENTER} zoom={DEFAULT_ZOOM} >
                           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution='&copy; David Miller | <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' />
                           {locations.map(location => {
-                              const { placename, coords, adress, products, categories, hours, telephone, email, description, url } = location;
+                              const { placename, coords, adress, products, category, hours, telephone, email, description, url } = location;
                               const position = [coords.lat, coords.lng];
                               return (
                                   <Marker key={placename} position={position} >
@@ -46,13 +46,7 @@ const MapsPage = ({ data, location }) => {
                                                       <li><strong>hours:</strong> {hours}</li>
                                                       <li><strong>desc:</strong> {description}</li>
                                                       <li><strong>url:</strong> {url}</li>
-                                                      <li><strong>Categories: </strong>
-                                                          {categories.map(category => {
-                                                              return (
-                                                                  <span key={category}>{category}, </span>
-                                                              )
-                                                          })}
-                                                      </li>
+                                                      <li><strong>Category: </strong>{category} </li>
                                                       <li><strong>Products: </strong>
                                                           <ul>
                                                               {products.map(product => {

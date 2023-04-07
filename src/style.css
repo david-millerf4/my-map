@@ -366,6 +366,10 @@ h1.popup-header {
 
   /* Mapping */
 
+  .map-geo {
+    height: 90vh;
+  }
+
   .map-header {
     background-color: #6d6868;
     height: 2rem;
