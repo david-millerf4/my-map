@@ -20,14 +20,14 @@ const MAP_LOCATION = {
   };
   const MAP_CENTER = [MAP_LOCATION.lat, MAP_LOCATION.lng];
   const MAP_ZOOM = 7.4;
-  const MAP_HEIGHT = {height: "700px"};
+  const MAP_CLASSNAME = "map-geo";
   const MAP_SCROLL = false;
 
-  const geoOpacity =  "0.3"
+  const geoOpacity =  "0.03"
   const geoColor = "#38c401"
   const geoAttribution = "David Miller"
 
-
+// map attribution
 const tileLayerSettings = {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -42,9 +42,8 @@ const GeoMapsPage = ({ data, location }) => {
         center: MAP_CENTER,
         defaultBaseMap: "OpenStreetMap",
         zoom: MAP_ZOOM,
-        style: MAP_HEIGHT,
         scrollWheel: MAP_SCROLL,
-        className: "map-geo",
+        className: MAP_CLASSNAME,
     };
 
     // Popup settings
@@ -59,15 +58,6 @@ const GeoMapsPage = ({ data, location }) => {
         color: geoColor,
         attribution: geoAttribution
     };
-
-    // Demonstration of possible usage
-    function MyComponent() {
-        const map = useMap()
-        console.log('MyComponent map center:', map.getCenter());
-        return null
-      };
-
-
 
     // Custom Button
     const CustomButton = () => {
@@ -169,10 +159,21 @@ const GeoMapsPage = ({ data, location }) => {
         return null;
     };
 
+
+    // Demonstration of possible usage
+    function MyComponent() {
+        const map = useMap()
+        console.log('MyComponent map center:', map.getCenter());
+        return null
+      };
+
+
       // potentially for sidebar
           function getInfo () {
         return "news of the day";
       }
+
+
 
     return (
         <Layout location={location} title={siteTitle}>

@@ -367,7 +367,8 @@ h1.popup-header {
   /* Mapping */
 
   .map-geo {
-    height: 90vh;
+    height: 85vh;
+    min-height: 50vh;
   }
 
   .map-header {
