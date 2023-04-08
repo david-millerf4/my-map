@@ -67,14 +67,14 @@ const GeoMapsPage = ({ data, location }) => {
         useEffect(() => {
             if (!map) return;
 
-            const customControler = L.Control.extend({
+            const customController = L.Control.extend({
                 options: {
                     position: "topright",
                 },
 
                 onAdd: function () {
                     const btn = L.DomUtil.create("button");
-                    btn.title = "pooooooooooooop rotation";
+                    btn.title = "feather light";
                     btn.textContent = "🪶";
                     btn.className = "customButton";
 
@@ -90,7 +90,7 @@ const GeoMapsPage = ({ data, location }) => {
                 },
             });
 
-            map.addControl(new customControler());
+            map.addControl(new customController());
         }, [map]);
 
         return null;
