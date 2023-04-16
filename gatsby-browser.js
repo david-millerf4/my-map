@@ -6,5 +6,5 @@ import "./src/normalize.css"
 // custom CSS styles
 import "./src/style.css"
 
-// Bootstrao styles
+// Bootstrap styles
 import 'bootstrap/dist/css/bootstrap.min.css';

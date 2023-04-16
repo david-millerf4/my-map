@@ -6,8 +6,6 @@ import MapHeader from "../components/map-header"
 import MapSidebar from "../components/map-sidebar"
 import MapPopups from "../components/map-popups"
 import L from "leaflet"
-import MarkerClusterGroup from "react-leaflet-cluster"
-
 import { MapContainer, TileLayer, Marker, Popup, useMap, GeoJSON, Tooltip, LayersControl, FeatureGroup, useMapEvent} from 'react-leaflet'
 
 import { locations } from "../data/locations-bayern"
@@ -49,6 +47,7 @@ const GeoMapsPage = ({ data, location }) => {
     // Popup settings
     const popUpSettings = {
         maxHeight: "400",
+        className: "map-popup",
     }
 
     // GEOJSON
@@ -191,7 +190,6 @@ const GeoMapsPage = ({ data, location }) => {
                                 <TileLayer {...tileLayerSettings} />
                                 <LayersControl.Overlay name="Bio Lebensmittel" checked={true}>
                                     <FeatureGroup>
-                                        <MarkerClusterGroup chunkedLoading>
                                             {bauern.map(B => {
                                                 const position = [B.coords.lat, B.coords.lng];
                                                 return (
@@ -203,12 +201,10 @@ const GeoMapsPage = ({ data, location }) => {
                                                     </Marker>
                                                 )
                                             })}
-                                        </MarkerClusterGroup>
                                     </FeatureGroup>
                                 </LayersControl.Overlay>
                                 <LayersControl.Overlay name="Bio Gastronom" checked={true}>
                                     <FeatureGroup>
-                                        <MarkerClusterGroup chunkedLoading>
                                             {gastros.map(gastro => {
                                                 const position = [gastro.coords.lat, gastro.coords.lng];
                                                 return (
@@ -220,7 +216,6 @@ const GeoMapsPage = ({ data, location }) => {
                                                     </Marker>
                                                 )
                                             })}
-                                        </MarkerClusterGroup>
                                     </FeatureGroup>
                                 </LayersControl.Overlay>
                             </LayersControl>

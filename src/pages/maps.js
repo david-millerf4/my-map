@@ -17,6 +17,8 @@ const MapsPage = ({ data, location }) => {
   const CENTER = [LOCATION.lat, LOCATION.lng];
   const DEFAULT_ZOOM = 6;
 
+  console.log("locations: ", locations)
+
   return (
       <Layout location={location} title={siteTitle}>
         <MapHeader title="bio bayern map of grape nehi" filters="some other filters" />
