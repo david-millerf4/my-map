@@ -181,25 +181,76 @@ export const locations = [
         image: ``,
     },
     {
-        placename: 'Bio Gastro',
-        category: 'biogastronom',
+        placename: 'Anderlbauer e.K.',
+        category: 'biolebensmittel',
         coords: {
-            lat: 48.1166122,
-            lng: 11.6890437,
+            lat: 47.8033388,
+            lng: 12.2871687,
         },
         products: [
-            `Catering`,
-            `Foodtruck`
+            `Schafkäse`,
+            `Ziegenkäse`,
+            `Kuhkäse`,
+            `Mishkäse`,
+            `Wurst- und Räucherwaren`
 
         ],
-        adress: `Edeltraudstraße 21, 81827 München`,
+        adress: `Hauptstraße 4, 83112 Frasdorf`,
         bundesland: `Bayern`,
-        hours: `Mo - Sa 8 bis 20 Uhr`,
-        telephone: `+015253379376`,
-        email: `kontakt@biofoodtruck.net`,
-        description: `Biogastronom, Catering, Foodtruck`,
+        hours: `Mo - Do 10 - 12:30, Fr. 9 - 12:30, Sa 10 - 12:30`,
+        telephone: `08052 847`,
+        email: `info@anderlbauer.de`,
+        description: `Biokaserei, Hofladen`,
         certificate: `yes`,
-        url: `https://www.biofoodtruck.net`,
+        url: `http://www.anderlbauer.de/`,
+        image: ``,
+    },
+    {
+        placename: 'LOKALBÄCKEREI BROTZEIT',
+        category: 'biolebensmittel',
+        coords: {
+            lat: 48.0398293,
+            lng: 11.5205789,
+        },
+        products: [
+            `Brot`,
+            `Semmel`,
+            `Süsse`,
+            `Kuchen`
+
+        ],
+        adress: `Marktpl. 1, 82031 Grünwald`,
+        bundesland: `Bayern`,
+        hours: `Mo - Fr: 7 - 18 Uhr, Sa: 7 - 13 Uhr, So: 8 - 11 Uhr`,
+        telephone: `+49 89 69804458`,
+        email: `servus@lokalbaeckerei-brotzeit.de`,
+        description: `Bio-Bäckerei`,
+        certificate: `yes`,
+        url: `https://lokalbaeckerei-brotzeit.de/`,
+        image: ``,
+    },
+    {
+        placename: 'mybioco BioCatering',
+        category: 'biogastronom',
+        coords: {
+            lat: 48.1762791,
+            lng: 11.7658862,
+        },
+        products: [
+            `Bio Catering`,
+            `Eventcatering`,
+            `Partyservice`,
+            `Bio Lieferservice`
+
+        ],
+        adress: `Henschelring 11, 85551 Kirchheim`,
+        bundesland: `Bayern`,
+        hours: `Mo - Fr: 7 - 18 Uhr, Sa: 7 - 13 Uhr, So: 8 - 11 Uhr`,
+        telephone: `+49 89 200 62 64 5`,
+        email: `info@mybioco.de`,
+        description: `Bio-Catering, Bio Partyservice`,
+        certificate: `yes`,
+        url: `https://mybioco.de/`,
         image: ``,
     },
 ];
