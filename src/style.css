@@ -362,7 +362,7 @@ div.leaflet-popup-content {
   min-width: 100%;
 }
 
-.popup-header {
+h1.popup-header {
   margin: 0 0 .2em;
   border-bottom: 1px solid #120b0b;
   background-color: #60ba2e;
