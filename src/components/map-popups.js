@@ -1,33 +1,48 @@
 import * as React from "react"
+import { GeoAlt, Telephone, Envelope, Globe, Clock } from 'react-bootstrap-icons';
 
 const MapPopups = ({ content = null }) => {
         const { placename, adress, products, category, hours, telephone, email, description, url } = content;
         return (
             <div className="map-popup">
                 <div className="map-popup-content">
-                    <h2 className="popup-header">{placename}</h2>
+                    <h1 className="popup-header">{placename}</h1>
                     {adress ?
                         <p className="map-popup-info">
-                            <h3 className="map-content-header">Adress</h3>
-                            <div>{adress}</div>
+                             <div>
+                                <GeoAlt className="pop-bi-geo-alt" />
+                                {adress}
+                            </div>
                         </p>
                     : ``}
                     <p className="map-popup-info">
                         <h3 className="map-content-header">Kontakt</h3>
                         {telephone ?
-                            <div><strong>Tel:</strong> {telephone}</div>
+                            <div>
+                                <Telephone className="pop-bi-telephone" />
+                                {telephone}
+                            </div>
                         : ``}
                         {email ?
-                            <div><strong>E-Mail: </strong>{email}</div>
+                            <div>
+                                <Envelope className="pop-bi-envelope" />
+                                {email}
+                            </div>
                         : ``}
                         {url ?
-                            <div><strong>Url:</strong> {url}</div>
+                            <div>
+                                <Globe className="pop-bi-globe" />
+                                {url}
+                            </div>
                         : ``}
                     </p>
                     {hours ?
                         <p className="map-popup-info">
                             <h3 className="map-content-header">Öffnungszeiten</h3>
-                            <div>{hours}</div>
+                            <div>
+                                <Clock className="pop-bi-clock" />
+                                {hours}
+                            </div>
                         </p>
                     : ``}
                     {description ?

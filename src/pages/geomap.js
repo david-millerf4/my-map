@@ -1,4 +1,4 @@
-import React, { useRef, useEffect }  from "react"
+import React, { useEffect }  from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
