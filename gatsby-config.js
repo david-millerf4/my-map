@@ -9,7 +9,7 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `My Map`,
+    title: `Map of Bio in Bayern`,
     author: {
       name: `David Miller`,
       summary: `living on planet earth at least for the forseeable time.`,
@@ -122,7 +122,7 @@ module.exports = {
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
         display: `minimal-ui`,
-        //icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/electric-sunburst-icon.png`, // This path is relative to the root of the site.
       },
     },
   ],

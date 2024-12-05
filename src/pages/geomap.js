@@ -6,7 +6,7 @@ import MapHeader from "../components/map-header"
 import MapSidebar from "../components/map-sidebar"
 import MapPopups from "../components/map-popups"
 import L from "leaflet"
-import { MapContainer, TileLayer, Marker, Popup, useMap, GeoJSON, Tooltip, LayersControl, FeatureGroup, useMapEvent} from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup, useMap, GeoJSON, Tooltip, LayersControl, FeatureGroup, useMapEvent } from 'react-leaflet'
 
 import { locations } from "../data/locations-bayern"
 import { bavariaGeoJson } from "../data/bavaria-geo"
@@ -16,14 +16,14 @@ const MAP_LOCATION = {
     lat: 49.018308,
     lng: 12.1319584
   };
-  const MAP_CENTER = [MAP_LOCATION.lat, MAP_LOCATION.lng];
-  const MAP_ZOOM = 7.4;
-  const MAP_CLASSNAME = "map-geo";
-  const MAP_SCROLL = false;
 
-  const geoOpacity =  "0.03"
-  const geoColor = "#38c401"
-  const geoAttribution = "David Miller"
+const MAP_CENTER = [MAP_LOCATION.lat, MAP_LOCATION.lng];
+const MAP_ZOOM = 7.4;
+const MAP_CLASSNAME = "map-geo";
+const MAP_SCROLL = false;
+const geoOpacity =  "0.03"
+const geoColor = "#38c401"
+const geoAttribution = "David Miller"
 
 // map attribution
 const tileLayerSettings = {
