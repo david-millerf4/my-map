@@ -9,7 +9,7 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `Map of Bio in Bayern`,
+    title: `Map of Bio in Bayern Germany`,
     author: {
       name: `David Miller`,
       summary: `living on planet earth at least for the forseeable time.`,
@@ -114,8 +114,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `My Map`,
-        short_name: `Mappy`,
+        name: `Map of Bio in Bayern Germany`,
+        short_name: `Map of Bio in Bayern`,
         start_url: `/`,
         background_color: `#ffffff`,
         // This will impact how browsers show your PWA/website

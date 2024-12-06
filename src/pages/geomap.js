@@ -13,14 +13,16 @@ import { bavariaGeoJson } from "../data/bavaria-geo"
 
 //  center on bayern
 const MAP_LOCATION = {
-    lat: 49.018308,
+    lat: 48.9350000,
     lng: 12.1319584
   };
 
 const MAP_CENTER = [MAP_LOCATION.lat, MAP_LOCATION.lng];
-const MAP_ZOOM = 7.4;
+const MAP_ZOOM_SNAP = 0.25;
+const MAP_ZOOM_DELTA = 0.25;
+const MAP_ZOOM = 7.75;
 const MAP_CLASSNAME = "map-geo";
-const MAP_SCROLL = false;
+const MAP_SCROLL = true;
 const geoOpacity =  "0.03"
 const geoColor = "#38c401"
 const geoAttribution = "David Miller"
@@ -39,6 +41,8 @@ const GeoMapsPage = ({ data, location }) => {
     const mapSettings = {
         center: MAP_CENTER,
         defaultBaseMap: "OpenStreetMap",
+        zoomDelta: MAP_ZOOM_DELTA,
+        zoomSnap: MAP_ZOOM_SNAP,
         zoom: MAP_ZOOM,
         scrollWheel: MAP_SCROLL,
         className: MAP_CLASSNAME,
@@ -48,6 +52,7 @@ const GeoMapsPage = ({ data, location }) => {
     const popUpSettings = {
         maxHeight: "400",
         className: "map-popup",
+        closeButton: true,
     }
 
     // GEOJSON
