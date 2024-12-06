@@ -9,7 +9,7 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `My Map`,
+    title: `Map of Bio in Bayern Germany`,
     author: {
       name: `David Miller`,
       summary: `living on planet earth at least for the forseeable time.`,
@@ -114,15 +114,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `My Map`,
-        short_name: `Mappy`,
+        name: `Map of Bio in Bayern Germany`,
+        short_name: `Map of Bio in Bayern`,
         start_url: `/`,
         background_color: `#ffffff`,
         // This will impact how browsers show your PWA/website
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/electric-sunburst-icon.png`, // This path is relative to the root of the site.
       },
     },
   ],

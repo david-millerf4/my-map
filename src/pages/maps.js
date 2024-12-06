@@ -11,11 +11,11 @@ const MapsPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
 
   const LOCATION = {
-    lat: 48.8992823,
-    lng: 9.165479
+    lat: 49.018308,
+    lng: 12.1319584
   };
   const CENTER = [LOCATION.lat, LOCATION.lng];
-  const DEFAULT_ZOOM = 6;
+  const DEFAULT_ZOOM = 7.4;
 
   console.log("locations: ", locations)
 
