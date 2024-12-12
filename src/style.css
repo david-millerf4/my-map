@@ -33,6 +33,7 @@
     "Noto Color Emoji";
   --fontFamily-serif: "Merriweather", "Georgia", Cambria, "Times New Roman",
     Times, serif;
+  --fontFamily-bayerisch: "UnifrakturMaguntia', Arial, Verdana, Helvetica, sans-serif";
   --font-body: var(--fontFamily-serif);
   --font-heading: var(--fontFamily-sans);
   --fontWeight-normal: 400;

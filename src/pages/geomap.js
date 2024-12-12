@@ -19,7 +19,7 @@ const MAP_LOCATION = {
 
 const MAP_CENTER = [MAP_LOCATION.lat, MAP_LOCATION.lng];
 const MAP_ZOOM_SNAP = 0.25;
-const MAP_ZOOM_DELTA = 0.25;
+const MAP_ZOOM_DELTA = 1.25;
 const MAP_ZOOM = 7.75;
 const MAP_CLASSNAME = "map-geo";
 const MAP_SCROLL = true;
@@ -130,10 +130,13 @@ const GeoMapsPage = ({ data, location }) => {
     // location sorting
     const gastros = [];
     const bauern = [];
+    const lebensmittel = [];
     const sortLocationCategory = (location) => {
       for (let i = 0; i < location.length; i++) {
         if (location[i].category === `biogastronom`) {
             gastros.push(location[i])
+        } else if (location[i].category === `biolebensmittel`) {
+            lebensmittel.push(location[i])
         } else {
             bauern.push(location[i])
         }
@@ -193,7 +196,7 @@ const GeoMapsPage = ({ data, location }) => {
                             <Legend />
                             <LayersControl position="topright" collapsed={false}>
                                 <TileLayer {...tileLayerSettings} />
-                                <LayersControl.Overlay name="Bio Lebensmittel" checked={true}>
+                                <LayersControl.Overlay name="Bio Bauern" checked={true}>
                                     <FeatureGroup>
                                             {bauern.map(B => {
                                                 const position = [B.coords.lat, B.coords.lng];
@@ -202,6 +205,21 @@ const GeoMapsPage = ({ data, location }) => {
                                                         <Tooltip>{B.placename}</Tooltip>
                                                         <Popup {...popUpSettings}>
                                                             <MapPopups content={B} />
+                                                        </Popup>
+                                                    </Marker>
+                                                )
+                                            })}
+                                    </FeatureGroup>
+                                </LayersControl.Overlay>
+                                <LayersControl.Overlay name="Bio Lebensmittel" checked={true}>
+                                    <FeatureGroup>
+                                            {lebensmittel.map(LM => {
+                                                const position = [LM.coords.lat, LM.coords.lng];
+                                                return (
+                                                    <Marker key={LM.coords.lat} position={position} alt={LM.placename} riseOnHover={true}>
+                                                        <Tooltip>{LM.placename}</Tooltip>
+                                                        <Popup {...popUpSettings}>
+                                                            <MapPopups content={LM} />
                                                         </Popup>
                                                     </Marker>
                                                 )
